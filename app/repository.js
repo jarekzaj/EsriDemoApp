@@ -70,22 +70,28 @@ define([
                 title: "Parkruns",
                 source: graphics,
                 fields: [{
-                    name: "id",
-                    alias: "id",
-                    type: "oid"
-                }, {
-                    name: "name",
-                    alias: "Name",
-                    type: "string"
-                }, {
-                    name: "longname",
-                    alias: "Longname",
-                    type: "string"
-                }, {
-                    name: "series",
-                    alias: "Series",
-                    type: "integer"
-                }],
+                        name: "id",
+                        alias: "id",
+                        type: "oid"
+                    }, {
+                        name: "name",
+                        alias: "Name",
+                        type: "string"
+                    }, {
+                        name: "longname",
+                        alias: "Longname",
+                        type: "string"
+                    }, {
+                        name: "series",
+                        alias: "Series",
+                        type: "integer"
+                    },
+                    {
+                        name: "location",
+                        alias: "Location",
+                        type: "string"
+                    }
+                ],
                 objectIdField: "id",
                 renderer: renderer,
                 spatialReference: {
@@ -94,7 +100,7 @@ define([
                 geometryType: "point",
                 popupTemplate: {
                     title: "{Longname}",
-                    content: "<p>{Longname}</p>"
+                    content: "<p>Located at {Location}</p>"
                 },
                 visible: true
             });
@@ -113,6 +119,7 @@ define([
                         name: feature.properties.eventname,
                         longname: feature.properties.EventLongName,
                         series: feature.properties.seriesid,
+                        location: feature.properties.EventLocation
                     }
                 }
             }.bind(this));
